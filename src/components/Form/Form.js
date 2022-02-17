@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import shortid from 'shortid';
 import { useDispatch } from 'react-redux';
-import actions from '../../redux/contacts/contacts-actions';
+import { onSubmitHandler } from '../../redux/contacts/contacts-operations';
 import s from './Form.module.css';
 
 const Form = () => {
@@ -17,7 +17,7 @@ const Form = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(actions.onSubmitHandler({ id: shortid.generate(), name, number }));
+    dispatch(onSubmitHandler({ id: shortid.generate(), name, number }));
     setName('');
     setNumber('');
   };

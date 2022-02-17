@@ -1,0 +1,43 @@
+{
+  "contacts": [
+    {
+      "name": "Alexei Navalny",
+      "number": "456-546-3456"
+    },
+    {
+      "name": "Dmitrii Bykov",
+      "number": "456-546-3451"
+    },
+    {
+      "name": "Ekaterina Shulman",
+      "number": "456-546-3450"
+    },
+    {
+      "name": "Boris Nemtsov",
+      "number": "456-546-3459"
+    },
+    {
+      "name": "Anna Politkovskaya",
+      "number": "456-546-3458"
+    },
+    {
+      "name": "Leonid Parfenov",
+      "number": "456-546-3457"
+    },
+    {
+      "id": "GVqqwocKU",
+      "name": "Татьяна Борисова",
+      "number": "456-546-3452"
+    },
+    {
+      "id": "qGlmF4auh",
+      "name": "Yuri Dud",
+      "number": "456-546-3150"
+    },
+    {
+      "id": "gmFDKxVLY",
+      "name": "Ekaterina Shulman",
+      "number": "456-546-3456"
+    }
+  ]
+}
