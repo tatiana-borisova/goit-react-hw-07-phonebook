@@ -25,12 +25,12 @@ const App = () => {
 
       <Section title="Contacts">
         <Filter />
+        <ContactList />
         {isLoadingContacts && (
           <div style={{ display: 'flex', justifyContent: 'center' }}>
             <Puff color="#7dcdff" />
           </div>
         )}
-        {!isLoadingContacts && <ContactList />}
       </Section>
     </div>
   );
