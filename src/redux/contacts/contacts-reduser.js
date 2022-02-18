@@ -15,8 +15,7 @@ import {
 
 const items = createReducer([], {
   [fetchContactsSuccess]: (_, { payload }) => payload,
-  [onSubmitHandlerSuccess]: (state, { payload }) =>
-    checkingExistingContacts(state, payload),
+  [onSubmitHandlerSuccess]: (state, { payload }) => [...state, payload],
   [deleteContactSuccess]: (state, { payload }) =>
     state.filter(({ id }) => id !== payload),
 });
@@ -24,24 +23,6 @@ const items = createReducer([], {
 const filter = createReducer('', {
   [onChangeFilter]: (_, { payload }) => payload,
 });
-
-const checkingExistingContacts = (state, value) => {
-  const isNameHere = state.find(
-    contact => contact.name.toLowerCase() === value.name.toLowerCase(),
-  );
-
-  const isNumberHere = state.find(
-    contact => contact.number.toLowerCase() === value.number.toLowerCase(),
-  );
-
-  return isNameHere || isNumberHere
-    ? alert(
-        `${isNameHere ? value.name : ''} ${
-          isNumberHere ? value.number : ''
-        } is already in contacts`,
-      )
-    : [...state, value];
-};
 
 const loading = createReducer(false, {
   [fetchContactsRequest]: () => true,

@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import shortid from 'shortid';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getItems } from '../../redux/contacts/contacts-selectors';
 import { onSubmitHandler } from '../../redux/contacts/contacts-operations';
 import s from './Form.module.css';
 
 const Form = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+  const contacts = useSelector(getItems);
   const dispatch = useDispatch();
 
   const handleChange = e => {
@@ -17,7 +19,23 @@ const Form = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(onSubmitHandler({ id: shortid.generate(), name, number }));
+
+    const isNameHere = contacts.find(
+      contact => contact.name.toLowerCase() === name.toLowerCase(),
+    );
+
+    const isNumberHere = contacts.find(
+      contact => contact.number.toLowerCase() === number.toLowerCase(),
+    );
+
+    isNameHere || isNumberHere
+      ? alert(
+          `${isNameHere ? name : ''} ${
+            isNumberHere ? number : ''
+          } is already in contacts`,
+        )
+      : dispatch(onSubmitHandler({ id: shortid.generate(), name, number }));
+
     setName('');
     setNumber('');
   };
