@@ -1,6 +1,9 @@
 import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
 import {
+  fetchContactsRequest,
+  fetchContactsSuccess,
+  fetchContactsError,
   onSubmitHandlerRequest,
   onSubmitHandlerSuccess,
   onSubmitHandlerError,
@@ -11,6 +14,7 @@ import {
 } from './contacts-actions';
 
 const items = createReducer([], {
+  [fetchContactsSuccess]: (_, { payload }) => payload,
   [onSubmitHandlerSuccess]: (state, { payload }) =>
     checkingExistingContacts(state, payload),
   [deleteContactSuccess]: (state, { payload }) =>
@@ -40,6 +44,10 @@ const checkingExistingContacts = (state, value) => {
 };
 
 const loading = createReducer(false, {
+  [fetchContactsRequest]: () => true,
+  [fetchContactsSuccess]: () => false,
+  [fetchContactsError]: () => false,
+
   [onSubmitHandlerRequest]: () => true,
   [onSubmitHandlerSuccess]: () => false,
   [onSubmitHandlerError]: () => false,

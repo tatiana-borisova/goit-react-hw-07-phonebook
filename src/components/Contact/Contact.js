@@ -7,6 +7,7 @@ import s from './Contact.module.css';
 const Contact = ({ data }) => {
   const { name, number, id } = data;
   const dispatch = useDispatch();
+  const forDeleteContact = id => dispatch(deleteContact(id));
 
   return (
     <div className={s.contact}>
@@ -17,7 +18,7 @@ const Contact = ({ data }) => {
       <button
         className={s.button}
         type="button"
-        onClick={() => dispatch(deleteContact(id))}
+        onClick={() => forDeleteContact(id)}
       >
         Delete
       </button>
