@@ -11,7 +11,7 @@ import {
   fetchContactsError,
 } from './contacts-actions';
 
-axios.defaults.baseURL = 'http://localhost:4040';
+axios.defaults.baseURL = 'https://61ba064d48df2f0017e5a8a4.mockapi.io/';
 
 // Asynchronous option:
 // export const fetchContacts = () => async dispatch => {
